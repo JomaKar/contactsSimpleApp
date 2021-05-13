@@ -16,9 +16,11 @@ export const getAll = async () => {
 
 export const getOne = async (id) => {
     let response = null;
+    console.log('id', id);
     await fetch(`${apiURL}/${id}`)
-        .then(rspn => rspn.json())
-        .then(rspn => {
+    .then(rspn => rspn.json())
+    .then(rspn => {
+            console.log('rspn', rspn);
             response = rspn
         })
         .catch(err => {

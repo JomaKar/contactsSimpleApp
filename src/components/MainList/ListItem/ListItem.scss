@@ -1,0 +1,59 @@
+.contact-li-wrapper {
+    display: block;
+    padding: 30px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 2px solid #eee;
+
+    .contact-container {
+        display: flex;
+        justify-content: space-between;
+
+        .icon-container {
+            position: relative;
+
+            .icon-button {
+                border-radius: 50%;
+                border: none;
+                width: 30px;
+                height: 30px;
+                background-color: bisque;
+                font-size: 20px;
+                font-weight: 700;
+                color: #b7884a;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgb(247, 189, 119);
+                }
+            }
+
+            .contact-options-tooltip {
+                position: absolute;
+                right: 33px;
+                top: -25px;
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                border: none;
+                z-index: 20;
+                background-color: rgb(255, 221, 158);
+                overflow: hidden;
+                
+                .link-option {
+                    min-width: 120px;
+                    color: #61acfb;
+                    text-decoration: none;
+                    font-size: 16px;
+                    font-weight: 700;
+                    padding: 10px 15px;
+
+
+                    &:hover {
+                        background-color: #f7cd7e;
+                    }
+                }
+            }
+        }
+    }
+}

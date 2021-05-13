@@ -1,0 +1,67 @@
+.detail-wrapper {
+    padding: 30px 15px;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 700;
+    min-width: 230px;
+    position: relative;
+
+    .closeX {
+        position: absolute;
+        top: 24px;
+        right: 10px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 1.5;
+        border: none;
+        width: 25px;
+        height: 25px;
+        background-color: rgb(167, 199, 238);
+        font-size: 15px;
+        font-weight: 700;
+        color: #820101;
+        cursor: pointer;
+        transform: rotate(45deg);
+
+        &:hover {
+            background-color: rgb(135, 135, 135);
+        }
+    }
+
+    .data-body {
+        position: relative;
+
+        p {
+            font-size: 15px;
+            font-weight: 100;
+            margin-bottom: 20px;
+    
+            .detail-value {
+                color: orangered;
+            }
+        }
+
+        .options-container {
+            display: flex;
+            width: 100%;
+
+            .contact-option {
+                padding: 10px;
+                text-transform: uppercase;
+                text-decoration: none;
+                font-weight: 100;
+                font-size: 15px;
+                background-color: rgb(255, 250, 95);
+                color:rgb(71, 101, 179);
+                margin-right: 10px;
+                
+                &.red {
+                    background-color: rgb(255, 171, 132);
+                    color:rgb(167, 8, 8);
+
+                }
+            }
+        }
+    }
+
+}

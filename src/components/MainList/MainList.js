@@ -4,7 +4,6 @@ import {
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
   } from "react-router-dom";
 
@@ -21,30 +20,52 @@ function MainList() {
     const [contacts, setContacts] = useState([]);
 
     useEffect(() => {
-        getAll().then(data => {
-            if(data && data.length) setContacts(data);
-        });
+        fetchContacts();
     }, []);
+
+    const fetchContacts = async () => {
+        console.log('FETCHING CONTACTS');
+        getAll().then(data => {
+            if(data && data.length) {
+                console.log('FETCHED CONTACTS', data);
+                setContacts(data);
+            }
+        });
+    }
 
     return (
         <div className="container">
-            <div className="main-list">
-                <ul>
-                    {contacts.map(contact => <ListItem data={contact} key={contact.id} />)}
-                </ul>
+            <div className="header-app">
+                <h1>
+                    Welcome to your contacts List App
+                </h1>
             </div>
-            <div className="detail-view">
-                <Switch>
-                    <Route exact path={`${path}detail/:contactId`}>
-                        <Detail />
-                    </Route>
-                    <Route path={`${path}add`}>
-                        <Modal />
-                    </Route>
-                    <Route path={`${path}edit/:contactId`}>
-                        <Modal />
-                    </Route>
-                </Switch>
+            <div className="content-app">
+                <div className="list-wrapper">
+                    <ul className="contacts-list">
+                        {contacts.map(contact => <ListItem data={contact} key={contact.id} />)}
+                    </ul>
+                </div>
+                <div className="detail-view">
+                    <Switch>
+                        <Route exact path={`${path}detail/:contactId`}>
+                            <Detail />
+                        </Route>
+                        <Route path={`${path}add`}>
+                            <Modal outputEmit={() => fetchContacts() } />
+                        </Route>
+                        <Route path={`${path}edit/:contactId`}>
+                            <Modal outputEmit={() => fetchContacts() } />
+                        </Route>
+                        <Route path={`${path}delete/:contactId`}>
+                            <Modal isDeletion={true} outputEmit={() => fetchContacts() } />
+                        </Route>
+                    </Switch>
+                </div>
+
+            </div>
+            <div className="add-wrapper">
+                <Link className="add-btn" to="/add">Add</Link>
             </div>
         </div>
   );
